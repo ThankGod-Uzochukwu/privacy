@@ -1,0 +1,1 @@
+now rebuild this in this folder "C:\codes\no-screenshot", but this time, it will be like a NPM package which can be installed by other developers and be used in desktop and mobile apps, desktop being the most priority.

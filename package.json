@@ -1,0 +1,93 @@
+{
+  "name": "veil",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "windows": "react-native run-windows --arch x64",
+    "macos": "react-native run-macos",
+    "web:dev": "vite --config web/vite.config.mts",
+    "web:build": "vite build --config web/vite.config.mts",
+    "linux:start": "npm run web:build && electron .",
+    "linux:dev": "node scripts/electron-dev.mjs",
+    "linux:dist": "npm run web:build && electron-builder --linux AppImage deb"
+  },
+  "dependencies": {
+    "react": "19.1.4",
+    "react-dom": "^19.1.4",
+    "react-native": "0.81.6",
+    "react-native-macos": "^0.81.9",
+    "react-native-web": "^0.21.4",
+    "react-native-windows": "^0.81.37",
+    "twrnc": "^4.16.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/runtime": "^7.25.0",
+    "@react-native-community/cli": "20.0.0",
+    "@react-native/babel-preset": "0.81.6",
+    "@react-native/eslint-config": "0.81.6",
+    "@react-native/metro-config": "0.81.6",
+    "@react-native/typescript-config": "0.81.6",
+    "@rnx-kit/jest-preset": "^0.1.17",
+    "@types/jest": "^29.5.13",
+    "@types/react": "^19.1.4",
+    "@types/react-test-renderer": "^19.1.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "babel-plugin-module-resolver": "^5.0.3",
+    "electron": "^44.9.0",
+    "electron-builder": "^26.15.3",
+    "eslint": "^8.19.0",
+    "jest": "^29.6.3",
+    "prettier": "2.8.8",
+    "react-test-renderer": "19.1.0",
+    "typescript": "^5.8.3",
+    "vite": "^8.3.4"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "react-native-windows": {
+    "init-windows": {
+      "name": "Veil",
+      "namespace": "Veil",
+      "template": "cpp-app"
+    }
+  },
+  "description": "Veil – desktop screen privacy: a Shield that blocks screenshots of the app, and Covers that hide parts of your screen in any screenshot.",
+  "main": "electron/main.js",
+  "build": {
+    "appId": "app.veil.privacy",
+    "productName": "Veil",
+    "files": [
+      "electron/**",
+      "dist/web/**",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.utilities"
+    }
+  }
+}
